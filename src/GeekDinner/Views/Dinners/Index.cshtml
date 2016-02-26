@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<GeekDinner.Core.Dinner>
+<h1>GeekDinner</h1>
+<h2>Dinners</h2>
+<ul>
+    @foreach (var dinner in @Model)
+    {
+        <li>@dinner.Title - @dinner.Description</li>
+    }
+</ul>
