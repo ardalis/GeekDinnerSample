@@ -23,7 +23,7 @@ namespace GeekDinner.Controllers
         }
 
         [HttpPost]
-        public IActionResult Rsvp([FromBody]RsvpRequest rsvpRequest)
+        public IActionResult AddRsvp([FromBody]RsvpRequest rsvpRequest)
         {
             if (!ModelState.IsValid)
             {

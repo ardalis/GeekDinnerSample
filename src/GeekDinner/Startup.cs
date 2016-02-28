@@ -34,6 +34,7 @@ namespace GeekDinner
             services.AddMvc();
 
             services.AddScoped<IDinnerRepository, DinnerRepository>();
+services.AddSingleton<IDateTime, SystemDateTime>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

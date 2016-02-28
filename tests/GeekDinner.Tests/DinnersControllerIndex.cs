@@ -9,10 +9,10 @@ using Xunit;
 
 namespace GeekDinner.Tests
 {
-public class DinnersControllerIndexShould
+public class DinnersControllerIndex
 {
     private readonly Mock<IDinnerRepository> _mockRepository;
-    public DinnersControllerIndexShould()
+    public DinnersControllerIndex()
     {
         _mockRepository = new Mock<IDinnerRepository>();
     }
@@ -20,14 +20,14 @@ public class DinnersControllerIndexShould
     private List<Dinner> GetTestDinnerCollection()
     {
         return new List<Dinner>()
-        {
-            new Dinner() {Title = "Test Dinner 1" },
-            new Dinner() {Title = "Test Dinner 2" }
-        };
+    {
+        new Dinner() {Title = "Test Dinner 1" },
+        new Dinner() {Title = "Test Dinner 2" }
+    };
     }
 
     [Fact]
-    public void ReturnDinnersInViewModel()
+    public void ReturnsDinnersInViewModel()
     {
         _mockRepository.Setup(r => r.List()).Returns(GetTestDinnerCollection());
         var controller = new DinnersController(_mockRepository.Object, null);

@@ -9,10 +9,10 @@ using Xunit;
 
 namespace GeekDinner.Tests
 {
-    public class OriginalDinnersControllerIndexShould
+    public class OriginalDinnersControllerIndex
     {
         private readonly GeekDinnerDbContext _dbContext;
-        public OriginalDinnersControllerIndexShould()
+        public OriginalDinnersControllerIndex()
         {
             var optionsBuilder = new DbContextOptionsBuilder<GeekDinnerDbContext>();
             optionsBuilder.UseInMemoryDatabase();
@@ -26,14 +26,14 @@ namespace GeekDinner.Tests
         }
 
         [Fact]
-        public void ReturnDinnersInViewModel()
+        public void ReturnsDinnersInViewModel()
         {
             var controller = new OriginalDinnersController(_dbContext);
 
             var result = controller.Index() as ViewResult;
             var viewModel = (result.ViewData.Model as IEnumerable<Dinner>).ToList();
 
-            Assert.Equal("Title 1", viewModel.First().Title);
+            Assert.Equal(1, viewModel.Count(d => d.Title == "Title 1"));
             Assert.Equal(3, viewModel.Count);
         }
     }
