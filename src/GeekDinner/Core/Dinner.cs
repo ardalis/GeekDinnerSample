@@ -59,12 +59,12 @@ namespace GeekDinner.Core
             return EventDate - RsvpDeadline;
         }
 
-public RsvpResult AddRsvp(string name, string email, DateTime currentDateTime)
-{
-    if (currentDateTime > RsvpDeadlineDateTime())
-    {
-        return new RsvpResult("Failed - Past deadline.");
-    }
+        public RsvpResult AddRsvp(string name, string email, DateTime currentDateTime)
+        {
+            if (currentDateTime > RsvpDeadlineDateTime())
+            {
+                return new RsvpResult("Failed - Past deadline.");
+            }
             var rsvp = new Rsvp()
             {
                 DateCreated = currentDateTime,
@@ -76,23 +76,14 @@ public RsvpResult AddRsvp(string name, string email, DateTime currentDateTime)
                 if (Rsvps.Count(r => !r.IsWaitlist) >= MaxAttendees.Value)
                 {
                     rsvp.IsWaitlist = true;
-                    ((List<Rsvp>)this.Rsvps).Add(rsvp);
+                    Rsvps.Add(rsvp);
 
                     return new RsvpResult("Waitlist");
                 }
             }
-            ((List<Rsvp>)this.Rsvps).Add(rsvp);
+            Rsvps.Add(rsvp);
 
             return new RsvpResult("Success");
         }
-    }
-
-    public class Rsvp
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string EmailAddress { get; set; }
-        public DateTime DateCreated { get; set; }
-        public bool IsWaitlist { get; set; }
     }
 }

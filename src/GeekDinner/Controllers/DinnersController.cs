@@ -34,8 +34,8 @@ namespace GeekDinner.Controllers
             {
                 return HttpNotFound("Dinner not found.");
             }
-            var result = dinner.AddRsvp(rsvpRequest.Name, 
-                rsvpRequest.Email, 
+            var result = dinner.AddRsvp(rsvpRequest.Name,
+                rsvpRequest.Email,
                 _systemClock.Now);
 
             _dinnerRepository.Update(dinner);

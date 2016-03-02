@@ -29,5 +29,16 @@ namespace GeekDinner.Tests
             Assert.NotNull(result);
             Assert.Equal("Dinner not found.", (string)result.Value);
         }
+
+        [Fact]
+        public void ReturnsBadRequestGivenInvalidModelState()
+        {
+            var controller = new DinnersController(_mockRepository.Object, _mockDateTime.Object);
+            controller.ModelState.TryAddModelError("name", "name is required");
+
+            var result = controller.AddRsvp(new RsvpRequest()) as BadRequestObjectResult;
+
+            Assert.NotNull(result);
+        }
     }
 }

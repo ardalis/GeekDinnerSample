@@ -8,9 +8,10 @@ using GeekDinner.Infrastructure;
 namespace GeekDinner.Migrations
 {
     [DbContext(typeof(GeekDinnerDbContext))]
-    partial class GeekDinnerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160302162741_rsvp")]
+    partial class rsvp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
