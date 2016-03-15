@@ -3,7 +3,7 @@ using GeekDinner.Core.Interfaces;
 
 namespace GeekDinner.Infrastructure
 {
-    public class SystemDateTime : IDateTime
+    public class MachineClockDateTime : IDateTime
     {
         public DateTime Now { get { return DateTime.Now; } }
     }
