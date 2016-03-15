@@ -24,9 +24,7 @@ namespace GeekDinner.Tests
             _mockRepository.Setup(r => r.GetById(0)).Returns((Dinner)null);
             var controller = new DinnersController(_mockRepository.Object, _mockDateTime.Object);
 
-            var result = controller.AddRsvp(new RsvpRequest()) as HttpNotFoundObjectResult;
-
-            Assert.NotNull(result);
+            var result = Assert.IsType<HttpNotFoundObjectResult>(controller.AddRsvp(new RsvpRequest()));
             Assert.Equal("Dinner not found.", (string)result.Value);
         }
 
